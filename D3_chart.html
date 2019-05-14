@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<body>
+	<style>
+		div{
+			background: #F2F4FF;
+			width: 160px;
+			height: 40px;
+			position: absolute;
+			opacity: 0;
+			text-align: center;
+			font-size: 14px;
+			line-height: 40px;
+		}
+	</style>
+<script src="http://d3js.org/d3.v4.min.js" ></script>  <!---need to connect to internet--->
+<script>
+	//sampleData.json
+	var result=[{
+    "name" : "H",
+    "values" : {
+        "sub" : {
+            "value2" : 0.8567260142147746
+        },
+        "value1" : 0.29538280144783857
+    }
+}, {
+    "name" : "G",
+    "values" : {
+        "sub" : {
+            "value2" : 0.1351899226594333
+        },
+        "value1" : 0.8790265927978398
+    }
+}, {
+    "name" : "W",
+    "values" : {
+        "sub" : {
+            "value2" : 0.07649777717598116
+        },
+        "value1" : 0.44068565617227007
+    }
+}, {
+    "name" : "T",
+    "values" : {
+        "sub" : {
+            "value2" : 0.41560599781278396
+        },
+        "value1" : 0.6291284404740605
+    }
+}, {
+    "name" : "A",
+    "values" : {
+        "sub" : {
+            "value2" : 0.2769981971967146
+        },
+        "value1" : 0.23560284050865254
+    }
+}, {
+    "name" : "E",
+    "values" : {
+        "sub" : {
+            "value2" : 0.8326063118799962
+        },
+        "value1" : 0.04675214961537777
+    }
+}, {
+    "name" : "L",
+    "values" : {
+        "sub" : {
+            "value2" : 0.16687401004085323
+        },
+        "value1" : 0.10537259943271127
+    }
+}, {
+    "name" : "O",
+    "values" : {
+        "sub" : {
+            "value2" : 0.1973542452319461
+        },
+        "value1" : 0.17125811002826974
+    }
+}, {
+    "name" : "B",
+    "values" : {
+        "sub" : {
+            "value2" : 0.8820985686120075
+        },
+        "value1" : 0.731394381039947
+    }
+}, {
+    "name" : "D",
+    "values" : {
+        "sub" : {
+            "value2" : 0.1607906801722132
+        },
+        "value1" : 0.33619012168086737
+    }
+}, {
+    "name" : "X",
+    "values" : {
+        "sub" : {
+            "value2" : 0.18357857813143874
+        },
+        "value1" : 0.5303209892130214
+    }
+}, {
+    "name" : "K",
+    "values" : {
+        "sub" : {
+            "value2" : 0.5921548823887839
+        },
+        "value1" : 0.8880062761174314
+    }
+}, {
+    "name" : "M",
+    "values" : {
+        "sub" : {
+            "value2" : 0.7373224563005134
+        },
+        "value1" : 0.5949145145964032
+    }
+}, {
+    "name" : "Y",
+    "values" : {
+        "sub" : {
+            "value2" : 0.3900080376560797
+        },
+        "value1" : 0.7748507779921776
+    }
+}, {
+    "name" : "C",
+    "values" : {
+        "sub" : {
+            "value2" : 0.5129829138391833
+        },
+        "value1" : 0.9440867506238648
+    }
+}, {
+    "name" : "R",
+    "values" : {
+        "sub" : {
+            "value2" : 0.38734512721715797
+        },
+        "value1" : 0.8768379810239715
+    }
+}, {
+    "name" : "I",
+    "values" : {
+        "sub" : {
+            "value2" : 0.9734809266404723
+        },
+        "value1" : 0.7577790399988551
+    }
+}, {
+    "name" : "N",
+    "values" : {
+        "sub" : {
+            "value2" : 0.49679251843436645
+        },
+        "value1" : 0.44589022857091387
+    }
+}, {
+    "name" : "J",
+    "values" : {
+        "sub" : {
+            "value2" : 0.35840113049684796
+        },
+        "value1" : 0.21040225638572796
+    }
+}, {
+    "name" : "S",
+    "values" : {
+        "sub" : {
+            "value2" : 0.02825487978286878
+        },
+        "value1" : 0.4701825357275926
+    }
+}, {
+    "name" : "P",
+    "values" : {
+        "sub" : {
+            "value2" : 0.016458279789800967
+        },
+        "value1" : 0.21890820625422958
+    }
+}, {
+    "name" : "F",
+    "values" : {
+        "sub" : {
+            "value2" : 0.5305944336917048
+        },
+        "value1" : 0.8940753015634482
+    }
+}, {
+    "name" : "U",
+    "values" : {
+        "sub" : {
+            "value2" : 0.6939391006357627
+        },
+        "value1" : 0.989473374750288
+    }
+}, {
+    "name" : "Q",
+    "values" : {
+        "sub" : {
+            "value2" : 0.9278211586627256
+        },
+        "value1" : 0.09295799394161053
+    }
+}, {
+    "name" : "V",
+    "values" : {
+        "sub" : {
+            "value2" : 0.7455747099538641
+        },
+        "value1" : 0.962964621574667
+    }
+}, {
+    "name" : "Z",
+    "values" : {
+        "sub" : {
+            "value2" : 0.6479688003363191
+        },
+        "value1" : 0.5198406132969589
+    }
+}];
+
+	//Fetch data from json
+	var list_name = new Array();   //name
+	var list = new Array();        //array for value1
+	var list2 = new Array();       //array for value2	
+    for(var i in result){        //traverse array       
+        //alert(result[i].name)
+		list_name[i] = result[i].name;
+		//alert(result[i].values.value1)
+		list[i] = result[i].values.value1;      //fetch value1
+		list2[i] = result[i].values.sub.value2; //fetch value2
+    }
+	
+	//Set svg
+	var width = "100%";  //make the width same to the parent element
+	var height ="100%";   //make the hight same to the parent element
+	var svg = d3.select("body")     
+		.append("svg")          //append svg
+		.attr("width", width)       
+		.attr("height", height)
+		.attr("viewBox","0 0 400 240") //set viewBox as（400，240）
+		.attr("preserveAspectRatio","xMaxYMax meet");
+			
+	//Set the scale
+	var max_height = 70;
+	var linear = d3.scaleLinear()
+		.domain([0, d3.max(list)])
+        .range([ max_height-5, 0]);	
+	var x = list_name.length
+	var rect_width = 300/x;  //width of each bar
+	
+	//Set the bar for value1
+	bar1 = svg.append("g")
+		.attr("class","bar1")
+		.attr("transform","translate(0,0)");
+	bar1.selectAll("rect")
+		.data(list)
+		.enter()
+		.append("rect")
+		//position for histogram1
+		.attr("y", function(d){return linear(d)+26})
+		.attr("x",function(d,i){
+			return i * (rect_width+1)+22;
+		})
+		.attr("height",function(d){
+			return max_height-linear(d);
+		})
+		.attr("width", rect_width)
+		.attr("fill","steelblue")
+		.attr("opacity",0.5)
+			//prompt box
+			.on("mouseover",function(d,i){  //if mouse is on the bar
+				d3.select(this)
+					.attr("opacity",1);  //change the opacity
+			tooltip.html(list[i])
+				//position for prompt box
+                .style("left", (d3.event.pageX+30) + "px")
+                .style("top", (d3.event.pageY-10) + "px")
+                .style("opacity",1.0);
+			})
+			.on("mouseout",function(d,i){  //if mouse is out of the bar
+				d3.select(this)
+					.transition()
+					.duration(500)
+					.attr("opacity",0.5);  //change the opacity
+				tooltip.style("opacity",0.0); 
+			})
+			.on("mousemove",function(d){   //let the prompt box move with mouse
+                tooltip.style("left", (d3.event.pageX+30) + "px")
+                       .style("top", (d3.event.pageY-10) + "px");
+            })
+        .on("click",function () {
+        });		
+	var tooltip = d3.select("body")
+        .append("div")
+        .attr("class","tooltip")
+        .style("opacity",0.0);
+							
+	//Set the bar for value2				
+	bar2 = svg.append("g")
+		.attr("class","bar2")
+		.attr("transform","translate(0,120)");  //position for bar2
+	
+	bar2.selectAll("rect")
+		.data(list2)
+		.enter()
+		.append("rect")
+		.attr("y", function(d){return linear(d)+26})
+		.attr("x",function(d,i){
+			return i * (rect_width+1)+22;
+		})
+		.attr("height",function(d){
+			return max_height-linear(d);
+		})
+		.attr("width", rect_width)
+		.attr("fill","steelblue")
+		.attr("opacity",0.5)
+			.on("mouseover",function(d,i){
+				d3.select(this)
+					.attr("opacity",1);
+			tooltip.html(list2[i])
+                .style("left", (d3.event.pageX+30) + "px")
+                .style("top", (d3.event.pageY-10) + "px")
+                .style("opacity",1.0);
+			})
+			.on("mouseout",function(d,i){
+				d3.select(this)
+					.transition()
+					.duration(500)
+					.attr("opacity",0.5);
+				tooltip.style("opacity",0.0);
+			})
+			.on("mousemove",function(d){
+                tooltip.style("left", (d3.event.pageX+30) + "px")
+                       .style("top", (d3.event.pageY-10) + "px");
+            })
+        .on("click",function () {
+        });
+	var tooltip = d3.select("body")
+                            .append("div")
+                            .attr("class","tooltip")
+                            .style("opacity",0.0);						
+							
+	
+	//Set title
+    svg.append('text')
+		.attr("transform", "translate(150,20)")  //title position
+		.attr('font-weight', 1)
+		.text('Chart for value1');	
+	svg.append('text')
+		.attr("transform", "translate(150,140)")
+		.attr('font-weight', 1)
+		.text('Chart for value2');	
+		
+	//Set Y axis
+	var axis = d3.axisLeft(linear)
+        .tickSize(780)
+        .ticks(4)		        
+	svg.append("g")
+        .attr("transform", "translate(800,30)")  //position for Y axis
+        .call(axis);
+	svg.select(".domain").remove()
+		
+	var axis = d3.axisLeft(linear)
+        .tickSize(780)
+        .ticks(4)		        
+	svg.append("g")
+        .attr("transform", "translate(800,150)")
+        .call(axis);
+	svg.select(".domain").remove()	
+	//Set X axis	
+	let xx = d3.scaleBand().range([1,301+x])  //range on X
+	let xScale = xx.domain(list_name)
+	let xAxis = svg.append('g')
+               .attr('class', 'xAxisis')
+               .attr("transform", "translate(20,95)") //position for X axis
+               .call(d3.axisBottom(xScale))
+	let xx2 = d3.scaleBand().range([1,301+x])
+	let xScale2 = xx2.domain(list_name)
+	let xAxis2 = svg.append('g')
+               .attr('class', 'xAxisis')
+               .attr("transform", "translate(20,215)")
+               .call(d3.axisBottom(xScale2))
+	
+	
+	svg.selectAll("text")
+        .attr("font-size", "70%");
+	svg.selectAll("line")
+        .attr("stroke","grey")
+        .attr("stroke-dasharray","2.2");
+	
+    
+</script>
+</body>

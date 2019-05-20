@@ -239,8 +239,8 @@
     }
 	
 	//Set svg
-	var width = "100%";  //make the width same to the parent element
-	var height ="100%";   //make the hight same to the parent element
+	var width = "80%";  //make the width same to the parent element
+	var height ="80%";   //make the hight same to the parent element
 	var svg = d3.select("body")     
 		.append("svg")          //append svg
 		.attr("width", width)       
@@ -252,7 +252,7 @@
 	var max_height = 70;
 	var linear = d3.scaleLinear()
 		.domain([0, d3.max(list)])
-        .range([ max_height-5, 0]);	
+        .range([ max_height, 0]);	
 	var x = list_name.length
 	var rect_width = 300/x;  //width of each bar
 	
@@ -364,7 +364,7 @@
         .tickSize(780)
         .ticks(4)		        
 	svg.append("g")
-        .attr("transform", "translate(800,30)")  //position for Y axis
+        .attr("transform", "translate(800,25)")  //position for Y axis
         .call(axis);
 	svg.select(".domain").remove()
 		
@@ -372,7 +372,7 @@
         .tickSize(780)
         .ticks(4)		        
 	svg.append("g")
-        .attr("transform", "translate(800,150)")
+        .attr("transform", "translate(800,145)")
         .call(axis);
 	svg.select(".domain").remove()	
 	//Set X axis	
